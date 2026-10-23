@@ -42,3 +42,37 @@ def mostrar_pagina_actual():
         print(f"Página actual: {pagina_actual['dato']}")
     else:
         print("No hay ninguna página abierta.")
+
+def menu():
+    while True:
+        print("\n" + "="*30)
+        print("      MENÚ DEL NAVEGADOR")
+        print("="*30)
+        print("1. Visitar nueva página")
+        print("2. Retroceder")
+        print("3. Avanzar")
+        print("4. Mostrar página actual")
+        print("5. Salir")
+        
+        opcion = input("Selecciona una opción (1-5): ").strip()
+        print("-" * 30)
+        
+        if opcion == "1":
+            url = input("Ingresa la URL o nombre de la página: ")
+            if url:
+                visitar_pagina(url)
+            else:
+                print("x La URL no puede estar vacía.")
+        elif opcion == "2":
+            retroceder()
+        elif opcion == "3":
+            avanzar()
+        elif opcion == "4":
+            mostrar_pagina_actual()
+        elif opcion == "5":
+            print("Saliendo del navegador...")
+            break
+        else:
+            print("Opción no válida. Intenta de nuevo.")
+
+menu()
