@@ -76,11 +76,25 @@ def buscar(dato):
     if not dato:
         return "Se encuentra vacio"
     pasos_cabeza = 0
+    encontrado_cabeza = False
     actual_cabeza = cabeza
-    while actual_cabeza:
+    while actual_cabeza is not None:
         pasos_cabeza += 1
         if actual_cabeza["dato"] == dato:
+            encontrado_cabeza = True
             break
         actual_cabeza = actual_cabeza["siguiente"]
+
+    pasos_cola = 0
+    encontrado_cola
+    actual_cola = 0
+    while actual_cola is not None:
+        pasos_cola += 1
+        if actual_cola["dato"] == dato:
+            encontrado_cola = True
+            break
+        actual_cola = actual_cola["anterior"]
+
+    
 
     
