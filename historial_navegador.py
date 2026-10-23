@@ -56,7 +56,7 @@ def menu():
         
         opcion = input("Selecciona una opción (1-5): ").strip()
         print("-" * 30)
-        
+
         if opcion == "1":
             url = input("Ingresa la URL o nombre de la página: ")
             if url:
