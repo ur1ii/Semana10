@@ -19,4 +19,26 @@ def visitar_pagina(url):
         pagina_actual = nuevo
         cola = nuevo
         
-    print(f"✓ Visitando: {pagina_actual['dato']}")
+    print(f"Visitando: {pagina_actual['dato']}")
+
+def retroceder():
+    global pagina_actual
+    if pagina_actual and pagina_actual["anterior"] is not None:
+        pagina_actual = pagina_actual["anterior"]
+        print(f"Retrocediste a: {pagina_actual['dato']}")
+    else:
+        print("No hay páginas anteriores en el historial.")
+
+def avanzar():
+    global pagina_actual
+    if pagina_actual and pagina_actual["siguiente"] is not None:
+        pagina_actual = pagina_actual["siguiente"]
+        print(f"Avanzaste a: {pagina_actual['dato']}")
+    else:
+        print("No hay páginas siguientes en el historial.")
+
+def mostrar_pagina_actual():
+    if pagina_actual:
+        print(f"Página actual: {pagina_actual['dato']}")
+    else:
+        print("No hay ninguna página abierta.")
