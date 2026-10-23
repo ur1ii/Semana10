@@ -71,3 +71,16 @@ def eliminar(dato):
 print("Eliminado:", eliminar("Catálogo"))
 mostrar_adelante()
 mostrar_atras()
+
+def buscar(dato):
+    if not dato:
+        return "Se encuentra vacio"
+    pasos_cabeza = 0
+    actual_cabeza = cabeza
+    while actual_cabeza:
+        pasos_cabeza += 1
+        if actual_cabeza["dato"] == dato:
+            break
+        actual_cabeza = actual_cabeza["siguiente"]
+
+    
