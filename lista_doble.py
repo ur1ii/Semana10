@@ -73,8 +73,6 @@ mostrar_adelante()
 mostrar_atras()
 
 def buscar(dato):
-    if not dato:
-        return "Se encuentra vacio"
     pasos_cabeza = 0
     encontrado_cabeza = False
     actual_cabeza = cabeza
@@ -86,8 +84,9 @@ def buscar(dato):
         actual_cabeza = actual_cabeza["siguiente"]
 
     pasos_cola = 0
-    encontrado_cola
-    actual_cola = 0
+    encontrado_cola = False
+    actual_cola = cola
+    
     while actual_cola is not None:
         pasos_cola += 1
         if actual_cola["dato"] == dato:
@@ -95,6 +94,37 @@ def buscar(dato):
             break
         actual_cola = actual_cola["anterior"]
 
-    
+    print(f"--- Búsqueda de '{dato}' ---")
+    print(f" • Desde cabeza : {'Encontrado' if encontrado_cabeza else 'No encontrado'} ({pasos_cabeza} iteraciones)")
+    print(f" • Desde cola   : {'Encontrado' if encontrado_cola else 'No encontrado'} ({pasos_cola} iteraciones)")
 
-    
+    return encontrado_cabeza
+
+print("Resultado:", buscar("Bienvenida")) 
+print("Resultado:", buscar("Contacto"))   
+print("Resultado:", buscar("Productos"))
+
+def insertar_despues(referencia, dato):
+    global cabeza, cola
+    actual = cabeza
+    while actual is not None:
+        actual = actual["siguiente"]
+
+    if actual is None:
+        return False
+    nuevo = crear_nodo(dato)
+    siguiente_nodo = actual["siguiente"]
+
+    nuevo["anterior"] = actual
+    nuevo["siguiente"] = siguiente_nodo
+    actual["siguiente"] = nuevo
+
+    if siguiente_nodo is None:
+        cola = nuevo
+    else:
+        siguiente_nodo["anterior"] = nuevo
+    return True
+
+print("Insertado:", insertar_despues("Inicio", "Ofertas"))  
+print("Insertado:", insertar_despues("Blog", "Novedades"))   
+mostrar_adelante()
